@@ -7,16 +7,13 @@ import { auth } from '../../firebase.init';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { async } from '@firebase/util';
+import Loading from '../Shared/Loading';
 
 const Register = () => {
     const navigate = useNavigate()
+    const [user] = useAuthState(auth)
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const [
-        createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    const [createUserWithEmailAndPassword, u, loading, error,] = useCreateUserWithEmailAndPassword(auth);
 
     useEffect(() => {
         if (error) {
@@ -24,12 +21,23 @@ const Register = () => {
             toast.error(error?.message)
         }
     }, [error])
+    useEffect(() => {
+        if (user) {
+            navigate('/task')
+        }
+    }, [user])
+
+
+
+
 
     const onSubmit = data => {
-        console.log(data)
-            (async () => {
-                createUserWithEmailAndPassword()
-            })()
+        (async () => {
+            createUserWithEmailAndPassword(data.email, data.password)
+        })()
+    }
+    if (loading) {
+        return (<Loading></Loading>)
     }
 
     return (

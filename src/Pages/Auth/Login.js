@@ -1,16 +1,43 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import CommonTitle from '../../Component/CommonTitle';
+import { auth } from '../../firebase.init';
+import Loading from '../Shared/Loading';
 
 const Login = () => {
 
     const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const [signInWithEmailAndPassword, u, loading, error,] = useSignInWithEmailAndPassword(auth);
+    const [user] = useAuthState(auth)
+
+
+    useEffect(() => {
+        if (error) {
+
+            toast.error(error?.message)
+        }
+    }, [error])
+    useEffect(() => {
+        if (user) {
+            navigate('/task')
+        }
+    }, [user])
+
+
+
 
 
     const onSubmit = data => {
-        console.log(data)
+        (async () => {
+            signInWithEmailAndPassword(data.email, data.password)
+        })()
+    }
+    if (loading) {
+        return (<Loading></Loading>)
     }
     return (
         <div className='mt-10'>
