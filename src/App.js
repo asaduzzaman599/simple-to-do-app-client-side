@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import Login from './Pages/Auth/Login';
 import Register from './Pages/Auth/Register';
 import Tasks from './Pages/Task/Tasks';
+import RequireAuth from './Pages/Auth/RequireAuth';
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
         <Route path='/' element={<Login></Login>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
-        <Route path='/task' element={<Tasks></Tasks>}></Route>
+        <Route path='/task' element={<RequireAuth><Tasks></Tasks></RequireAuth>}></Route>
       </Routes>
 
       <ToastContainer />
