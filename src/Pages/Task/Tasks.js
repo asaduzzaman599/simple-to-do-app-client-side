@@ -3,9 +3,10 @@ import { useQuery } from 'react-query';
 import CommonTitle from '../../Component/CommonTitle';
 import Header from '../Shared/Header';
 import AddTask from './AddTask';
+import AllTask from './AllTask';
 
 const Tasks = () => {
-    const { isLoading, error, data } = useQuery('task', () =>
+    const { isLoading, error, data: tasks, refetch } = useQuery('task', () =>
         fetch('https://api.github.com/repos/tannerlinsley/react-query').then(res =>
             res.json()
         )
@@ -15,7 +16,13 @@ const Tasks = () => {
             <Header>
                 <>
                     <CommonTitle>Task</CommonTitle>
-                    <AddTask></AddTask></>
+                    <div className='container mx-auto grid md:grid-cols-4'>
+                        <AddTask refetch={refetch}></AddTask>
+                        <AllTask tasks={tasks} refetch={refetch} isLoading={isLoading}></AllTask>
+                    </div>
+
+                </>
+
             </Header>
 
         </div>

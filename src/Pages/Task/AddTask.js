@@ -1,16 +1,28 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import axiosInstance from '../../Api/api';
 import CommonSubTitle from '../../Component/CommonSubTitle';
 
-const AddTask = ({ }) => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+const AddTask = ({ refetch }) => {
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const onSubmit = data => {
+
+        (async () => {
+            const response = await axiosInstance.post('/task', data)
+            if (response.data.insertedId) {
+                toast.success('Task Inserted Successfuly')
+                reset()
+                refetch()
+            }
+        })()
+    };
     return (
-        <div className=" min-h-screen pb-10">
+        <div className=" min-h-screen pb-10 col-span-1">
 
             <div className="card  w-full max-w-sm shadow-2xl bg-base-10 mx-auto">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="card-body">
+                    <div className="card-body ">
                         <CommonSubTitle>Add Task</CommonSubTitle>
                         <div className="form-control">
                             <label className="label">
