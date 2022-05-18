@@ -77,7 +77,6 @@ const Login = () => {
                                 <p className='text-red-500'>{errors.password?.type === 'required' && "Password required"}</p>
                                 <p className='text-red-500'>{errors.password?.type === 'minLength' && errors.password.message}</p>
                             </div>
-                            <p className="label-text-alt link link-hover">Forgot password?</p>
                             <p className="label-text-alt link link-hover text-right text-primary" onClick={() => navigate('/register')}>Register Here</p>
 
                             <div className="form-control mt-6">
