@@ -18,7 +18,7 @@ const AddTask = ({ refetch }) => {
         })()
     };
     return (
-        <div className=" min-h-screen pb-10  col-span-1">
+        <div className=" min-h-screen pb-10  col-span-2">
 
             <div className="card  w-full shadow-2xl bg-base-10 mx-auto">
                 <form onSubmit={handleSubmit(onSubmit)}>

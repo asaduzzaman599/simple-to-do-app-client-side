@@ -14,6 +14,7 @@ function App() {
     <div className="App min-h-screen">
       <Routes>
         <Route path='/' element={<Login></Login>}></Route>
+        <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/task' element={<Tasks></Tasks>}></Route>
       </Routes>
