@@ -8,7 +8,7 @@ const Task = ({ task, refetch }) => {
         const response = await axiosInstance.put(`/task/${_id}`, task)
         console.log(response)
         if (response?.data?.matchedCount) {
-            toast.success(`${name} Complete`)
+            toast.success(`${name} Completed`)
             refetch()
         }
 
