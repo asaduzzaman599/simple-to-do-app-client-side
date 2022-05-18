@@ -1,5 +1,6 @@
 import React from 'react';
 import Loading from '../Shared/Loading';
+import Task from './Task';
 
 const AllTask = ({ tasks, refetch, isLoading }) => {
 
@@ -8,7 +9,10 @@ const AllTask = ({ tasks, refetch, isLoading }) => {
         return <Loading></Loading>
     }
     return (
-        <div className='w-4/6 grid md:grid-cols-2 col-span-1'>
+        <div className='grid md:grid-cols-3 col-span-2  gap-6'>
+            {
+                tasks?.map(task => <Task key={task?._id} task={task} refetch={refetch}></Task>)
+            }
 
         </div>
     );
