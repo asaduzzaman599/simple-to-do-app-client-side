@@ -19,7 +19,7 @@ const Tasks = () => {
             <Header>
                 <>
                     <CommonTitle>Task</CommonTitle>
-                    <div className='container mx-auto grid md:grid-cols-3 gap-6'>
+                    <div className='  md:grid md:grid-cols-3 md:gap-6 '>
                         <AddTask refetch={refetch}></AddTask>
                         <AllTask tasks={tasks} refetch={refetch} isLoading={isLoading}></AllTask>
                     </div>

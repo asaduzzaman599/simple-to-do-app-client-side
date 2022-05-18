@@ -18,9 +18,9 @@ const AddTask = ({ refetch }) => {
         })()
     };
     return (
-        <div className=" min-h-screen pb-10 col-span-1">
+        <div className=" min-h-screen pb-10  col-span-1">
 
-            <div className="card  w-full max-w-sm shadow-2xl bg-base-10 mx-auto">
+            <div className="card  w-full shadow-2xl bg-base-10 mx-auto">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="card-body ">
                         <CommonSubTitle>Add Task</CommonSubTitle>
