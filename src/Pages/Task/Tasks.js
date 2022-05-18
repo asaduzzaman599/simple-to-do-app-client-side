@@ -8,7 +8,7 @@ import AllTask from './AllTask';
 
 const Tasks = () => {
     const { isLoading, error, data: tasks, refetch } = useQuery('task', () =>
-        fetch('http://localhost:5000/task').then(res =>
+        fetch('https://todo-app-asaduzzaman599.herokuapp.com/task').then(res =>
             res.json()
         )
     )
