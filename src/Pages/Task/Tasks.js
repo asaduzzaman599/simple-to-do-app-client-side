@@ -1,6 +1,8 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import CommonTitle from '../../Component/CommonTitle';
+import Header from '../Shared/Header';
+import AddTask from './AddTask';
 
 const Tasks = () => {
     const { isLoading, error, data } = useQuery('task', () =>
@@ -10,7 +12,12 @@ const Tasks = () => {
     )
     return (
         <div>
-            <CommonTitle>Task</CommonTitle>
+            <Header>
+                <>
+                    <CommonTitle>Task</CommonTitle>
+                    <AddTask></AddTask></>
+            </Header>
+
         </div>
     );
 };
