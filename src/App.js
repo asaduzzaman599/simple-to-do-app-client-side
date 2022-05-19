@@ -8,6 +8,7 @@ import Login from './Pages/Auth/Login';
 import Register from './Pages/Auth/Register';
 import Tasks from './Pages/Task/Tasks';
 import RequireAuth from './Pages/Auth/RequireAuth';
+import NotFound from './Pages/Shared/NotFound';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/task' element={<RequireAuth><Tasks></Tasks></RequireAuth>}></Route>
+        <Route path='/*' element={<NotFound></NotFound>}></Route>
       </Routes>
 
       <ToastContainer />
