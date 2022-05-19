@@ -6,7 +6,6 @@ const Task = ({ task, refetch }) => {
     const { _id, task: name, description } = task
     const handleComplete = async () => {
         const response = await axiosInstance.put(`/task/${_id}`, task)
-        console.log(response)
         if (response?.data?.matchedCount) {
             toast.success(`${name} Completed`)
             refetch()
@@ -16,7 +15,6 @@ const Task = ({ task, refetch }) => {
 
     const handleDelete = async () => {
         const response = await axiosInstance.delete(`/task/${_id}`, task)
-        console.log(response)
         if (response?.data?.deletedCount) {
 
             toast.success(`${name} Deleted`)
