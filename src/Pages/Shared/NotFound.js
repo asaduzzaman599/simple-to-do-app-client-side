@@ -5,7 +5,7 @@ const NotFound = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        setInterval(() => {
+        setTimeout(() => {
             navigate('/task')
         }, 3000);
     }, []);
