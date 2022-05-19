@@ -72,7 +72,7 @@ const Register = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="label-text">Password</span>
                                 </label>
                                 <input type="password" placeholder=" Your Password " className="input input-bordered"  {...register("password", {
                                     required: true, minLength: {
