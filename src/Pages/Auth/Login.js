@@ -8,7 +8,7 @@ import { auth } from '../../firebase.init';
 import Loading from '../Shared/Loading';
 
 const Login = () => {
-
+    fetch(`https://todo-app-asaduzzaman599.herokuapp.com/`)
     const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [signInWithEmailAndPassword, u, loading, error,] = useSignInWithEmailAndPassword(auth);
@@ -68,7 +68,7 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="text" placeholder=" Your Password " className="input input-bordered"  {...register("password", {
+                                <input type="password" placeholder=" Your Password " className="input input-bordered"  {...register("password", {
                                     required: true, minLength: {
                                         value: 6,
                                         message: 'Minimum length 6'

@@ -27,7 +27,7 @@ const Task = ({ task, refetch }) => {
         <div className=' relative'>
             <div className="card mx-w-lg bg-base-100 shadow-xl">
                 <div className="card-body">
-                    <h2 className="card-title">{name}</h2>
+                    <h2 className={`${task?.complete ? "line-through card-title" : 'card-title'}`}>{name}</h2>
                     <p className={`${task?.complete ? "line-through" : ''}`}>{description}</p>
                     <div className="card-actions justify-end">
                         {

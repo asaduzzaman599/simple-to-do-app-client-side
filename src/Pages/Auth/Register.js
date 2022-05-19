@@ -74,7 +74,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="text" placeholder=" Your Password " className="input input-bordered"  {...register("password", {
+                                <input type="password" placeholder=" Your Password " className="input input-bordered"  {...register("password", {
                                     required: true, minLength: {
                                         value: 6,
                                         message: 'Minimum length 6'

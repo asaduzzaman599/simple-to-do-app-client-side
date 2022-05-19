@@ -1,19 +1,25 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import axiosInstance from '../../Api/api';
 import CommonSubTitle from '../../Component/CommonSubTitle';
+import { auth } from '../../firebase.init';
 
-const AddTask = ({ refetch }) => {
+const AddTask = ({ user, refetch }) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = data => {
 
         (async () => {
-            const response = await axiosInstance.post('/task', data)
-            if (response.data.insertedId) {
-                toast.success('Task Inserted Successfuly')
-                reset()
-                refetch()
+            if (user) {
+
+                data.email = user?.email
+                const response = await axiosInstance.post('/task', data)
+                if (response.data.insertedId) {
+                    toast.success('Task Inserted Successfuly')
+                    reset()
+                    refetch()
+                }
             }
         })()
     };
@@ -40,7 +46,7 @@ const AddTask = ({ refetch }) => {
 
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Add</button>
+                            <button className="btn btn-primary">Add Task</button>
                         </div>
                     </div>
                 </form>
